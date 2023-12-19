@@ -8,7 +8,7 @@ function App() {
   })
 
   const getnamedata= async()=>{
-    await axios.get("http://localhost:5000/").then(res=>{
+    await axios.get("https://sample-first.onrender.com/").then(res=>{
       setNameget(res.data)
     })
   }
@@ -16,7 +16,7 @@ function App() {
 
 
   const sendnamedata= async()=>{
-    await axios.post("http://localhost:5000/",{name}).then(res=>{
+    await axios.post("https://sample-first.onrender.com/",{name}).then(res=>{
       console.log(res.data)
     })
 
