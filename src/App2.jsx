@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
-
+import Cookies from 'universal-cookie'
 function App2() {
+  const cookies=new Cookies()
   const [name,setName] =useState()
   const [nameget,setNameget]=useState()
   const nav = useNavigate()
@@ -12,6 +13,7 @@ function App2() {
 
   const getnamedata= async()=>{
     await axios.get("https://sample-first.onrender.com/").then(res=>{
+
       setNameget(res.data)
     })
   }
@@ -31,6 +33,15 @@ function App2() {
 
   }
 
+  function maketoken(){
+    cookies.set('jwt','token kettida')
+  }
+  function deletetoken(){
+    console.log(cookies.get('jwt'))
+    cookies.remove('jwt')
+
+  }
+
 
   return (
     <div>
@@ -38,6 +49,7 @@ function App2() {
       <button onClick={sendnamedata}>send name</button>
       <h3>{nameget?nameget.map(obj=>{return <p key={obj._id}>{obj.name}</p>}):"no name given"}</h3> */}
       <button onClick={gotonew}>go to new page</button>
+      <button onClick={maketoken}>make token</button>
 
     </div>
   )
