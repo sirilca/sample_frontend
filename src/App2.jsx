@@ -34,7 +34,8 @@ function App2() {
   }
 
   function maketoken(){
-    cookies.set('jwt','token kettida')
+    cookies.set('dddd','token kettida',{maxAge:6000})
+    
   }
   function deletetoken(){
     console.log(cookies.get('jwt'))
@@ -50,6 +51,7 @@ function App2() {
       <h3>{nameget?nameget.map(obj=>{return <p key={obj._id}>{obj.name}</p>}):"no name given"}</h3> */}
       <button onClick={gotonew}>go to new page</button>
       <button onClick={maketoken}>make token</button>
+      <button onClick={deletetoken}>delete token</button>
 
     </div>
   )
